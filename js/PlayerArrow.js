@@ -12,6 +12,7 @@ class PlayerArrow {
     this.image = loadImage("./assets/arrow.png");
     this.trajectory = [];
     this.isRemoved = false;
+    this.visibility= 255;
     this.archerAngle = archerAngle;
     this.velocity = p5.Vector.fromAngle(archerAngle);
     World.add(world, this.body);
@@ -47,6 +48,7 @@ class PlayerArrow {
     translate(pos.x, pos.y);
     rotate(angle);
     imageMode(CENTER);
+    
     image(this.image, 0, 0, this.width, this.height);
     pop();
 
@@ -56,8 +58,13 @@ class PlayerArrow {
     }
 
     for (var i = 0; i < this.trajectory.length; i++) {
+      push()
       fill("white");
+      this.visibility-= 5 
+      tint(255, this.visibility)
       ellipse(this.trajectory[i][0], this.trajectory[i][1], 5, 5);
+      pop()
     }
+    
   }
 }

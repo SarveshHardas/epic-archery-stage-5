@@ -115,9 +115,13 @@ function keyReleased() {
   }
 }
 
-function showArrows(index, arrows) {
-  arrows[index].display();
- 
+function showArrows(index, arrows) 
+{ 
+  arrow.display(); 
+  if(arrows[index].body.position.x > width|| arrows[index].body.position.y > height)
+   { World.remove(world,arrow.body)
+     arrows.splice(index, 1); 
+    }
 }
 
 function handleComputerArcher() {
